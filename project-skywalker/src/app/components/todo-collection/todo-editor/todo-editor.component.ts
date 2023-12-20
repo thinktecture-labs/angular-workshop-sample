@@ -6,8 +6,8 @@ import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDatepickerModule } from '@angular/material/datepicker'
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { NameValidatorDirective } from '../validators/name-validator.directive';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NameValidatorDirective, nameValidtor } from '../validators/name-validator.directive';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Todo } from '../models/todo';
 
@@ -27,9 +27,9 @@ export class TodoEditorComponent implements OnInit, OnDestroy {
   private todo?: Todo;
 
   readonly todoForm = new FormGroup({
-    name: new FormControl(),
-    description: new FormControl(),
-    owner: new FormControl(),
+    name: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.max(20), nameValidtor('Todo')] }),
+    description: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    owner: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.max(20)] }),
     dueDate: new FormControl(),
   });
 
@@ -40,9 +40,9 @@ export class TodoEditorComponent implements OnInit, OnDestroy {
       switchMap(({ id }) => this.todoService.getTodo(+id))
     ).subscribe(todo => {
       this.todo = todo;
-      this.todoForm.controls.name.setValue(todo?.name);
-      this.todoForm.controls.description.setValue(todo?.description);
-      this.todoForm.controls.owner.setValue(todo?.owner);
+      this.todoForm.controls.name.setValue(todo?.name ?? '');
+      this.todoForm.controls.description.setValue(todo?.description ?? '');
+      this.todoForm.controls.owner.setValue(todo?.owner ?? '');
       this.todoForm.controls.dueDate.setValue(todo?.dueDate);
     });
   }

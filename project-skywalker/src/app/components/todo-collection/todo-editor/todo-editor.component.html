@@ -19,6 +19,6 @@
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <button mat-button color="primary" (click)="onSave()">Save</button>
+        <button mat-button type="button" color="primary" (click)="onSave()" [disabled]="todoForm.invalid">Save</button>
     </form>
 </div>

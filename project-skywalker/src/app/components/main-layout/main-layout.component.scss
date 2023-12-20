@@ -1,0 +1,18 @@
+:host {
+    height: 100vh;
+    overflow: hidden;
+}
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+.container {
+    padding: 1rem;
+}
+
+.is-active {
+    --mdc-list-list-item-label-text-color: deeppink;
+    --mdc-list-list-item-focus-label-text-color: deeppink;
+    --mdc-list-list-item-hover-label-text-color: deeppink;
+}

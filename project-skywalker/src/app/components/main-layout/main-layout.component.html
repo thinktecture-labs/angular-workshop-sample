@@ -1,4 +1,18 @@
 <mat-toolbar color="primary">
+    <button mat-icon-button (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
     <h4>Todos Application</h4>
 </mat-toolbar>
-<ng-content></ng-content>
+<mat-sidenav-container [hasBackdrop]="true">
+    <mat-sidenav [(opened)]="open" mode="over">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/todos" routerLinkActive="is-active">Todos</a>
+            <a mat-list-item routerLink="/pokemons" routerLinkActive="is-active">Pokemons</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="container">
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { TodoCollectionComponent } from './components/todo-collection/todo-collection.component';
 import { TodoEditorComponent } from './components/todo-collection/todo-editor/todo-editor.component';
+import { PokemonCollectionComponent } from './components/pokemon-collection/pokemon-collection.component';
 
 export const routes: Routes = [
     {
@@ -17,5 +18,9 @@ export const routes: Routes = [
                 component: TodoEditorComponent
             }
         ]
+    },
+    {
+        path: 'pokemons',
+        component: PokemonCollectionComponent
     }
 ];
