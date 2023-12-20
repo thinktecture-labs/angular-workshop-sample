@@ -1,3 +1,6 @@
-<div>
+<div style="display: flex;">
     <p *ngFor="let gen of generation$ | async">{{gen.name}}</p>
+</div>
+<div>
+    <p *ngFor="let pokemon of pokemonCollection$ | async">{{pokemon.name}}</p>
 </div>

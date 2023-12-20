@@ -13,4 +13,5 @@ export class PokemonCollectionComponent {
   private readonly pokemonService = inject(PokemonService);
 
   readonly generation$ = this.pokemonService.getGenerations();
+  readonly pokemonCollection$ = this.pokemonService.getPokemonCollection();
 }
