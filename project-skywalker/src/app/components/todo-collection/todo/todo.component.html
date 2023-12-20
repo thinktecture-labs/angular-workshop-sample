@@ -1,0 +1,19 @@
+<mat-card appearance="outlined">
+    <mat-card-content class="todo-info">
+        <span>{{ todo.name }}</span>
+        <span>{{ todo.dueDate | date: 'dd.MM' }}</span>
+        <span class="description">{{ todo.description }}</span>
+    </mat-card-content>
+    <mat-card-actions class="actions">
+        <mat-checkbox [checked]="todo.done" (change)="onCheckedChange($event.checked)"
+            [disabled]="todo.done"></mat-checkbox>
+        <div>
+            <button *ngIf="!todo.done" mat-icon-button color="secondary" (click)="onEdit()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="onDelete()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </mat-card-actions>
+</mat-card>

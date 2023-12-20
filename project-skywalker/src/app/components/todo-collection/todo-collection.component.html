@@ -1,0 +1,11 @@
+<div class="editor">
+    <router-outlet></router-outlet>
+</div>
+<div>
+    <ps-todo *ngFor="let todo of openTodos$ | async" [todo]="todo" (done)="onDone(todo, $event)"
+        (delete)="onDelete($event)"></ps-todo>
+</div>
+<hr />
+<div>
+    <ps-todo *ngFor="let todo of closedTodos$ | async" [todo]="todo" (delete)="onDelete($event)"></ps-todo>
+</div>

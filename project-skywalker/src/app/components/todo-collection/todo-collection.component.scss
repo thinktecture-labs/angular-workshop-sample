@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    div:not(:first-child) {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1rem;
+    }
+
+    hr {
+        width: 100%;
+    }
+}
