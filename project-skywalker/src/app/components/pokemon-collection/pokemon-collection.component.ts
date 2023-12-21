@@ -9,7 +9,7 @@ import {AsyncPipe, NgFor, NgIf, NgOptimizedImage} from '@angular/common';
 @Component({
   selector: 'ps-pokemon-collection',
   standalone: true,
-  imports: [NgIf, NgFor,NgOptimizedImage, AsyncPipe, MatTabsModule],
+  imports: [NgIf, NgFor, NgOptimizedImage, AsyncPipe, MatTabsModule],
   templateUrl: './pokemon-collection.component.html',
   styleUrl: './pokemon-collection.component.scss'
 })

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Pokemon } from '../models/pokemon';
 
 const apiBaseUrl = 'https://tt-pj-sample-api.azurewebsites.net/';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ export class PokemonService {
     return this.httpClient.get<Generation[]>(`${apiBaseUrl}generations`);
   }
 
-  getPokemonCollection(gen: number = 1) {
+  getPokemonCollection(gen: number = 1): Observable<Pokemon[]> {
     return this.httpClient.get<Pokemon[]>(`${apiBaseUrl}generations/${gen}/pokemon`).pipe(
       catchError(err => {
         console.error(err);

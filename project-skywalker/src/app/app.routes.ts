@@ -6,11 +6,13 @@ import { PokemonCollectionComponent } from './components/pokemon-collection/poke
 export const routes: Routes = [
     {
         path: '',
+      title: 'Default',
         redirectTo: 'todos',
         pathMatch: 'full'
     },
     {
         path: 'todos',
+        title: 'Todo´s',
         component: TodoCollectionComponent,
         children: [
             {
@@ -21,6 +23,7 @@ export const routes: Routes = [
     },
     {
         path: 'pokemon',
+        title: 'Pokemon',
         component: PokemonCollectionComponent
     }
 ];

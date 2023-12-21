@@ -2,7 +2,17 @@
     <button mat-icon-button (click)="toggleMenu()">
         <mat-icon>menu</mat-icon>
     </button>
-    <h4>Todos Application</h4>
+    <h4>Sample App</h4>
+    <div class="spacer"></div>
+    <button *ngIf="authenticated$ | async; else loggedIn" mat-icon-button (click)="login()">
+      <mat-icon>login</mat-icon>
+    </button>
+  <ng-template #loggedIn>
+    <p>{{(user$ | async)?.name}}</p>
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </ng-template>
 </mat-toolbar>
 <mat-sidenav-container [hasBackdrop]="true">
     <mat-sidenav [(opened)]="open" mode="over">
