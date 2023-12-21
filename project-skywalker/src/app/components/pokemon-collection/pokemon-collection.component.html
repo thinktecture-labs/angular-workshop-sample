@@ -1,11 +1,14 @@
-<mat-tab-group (selectedIndexChange)="generationId.set($event + 1)">
+<mat-tab-group (selectedIndexChange)="selectGeneration($event + 1)">
   <mat-tab *ngFor="let gen of generation$ | async" [id]="gen.id" [label]="gen.name">
-    <div *ngIf="pokemonCollection()?.length; else empty" class="pokemon-collection">
-      <div *ngFor="let pokemon of pokemonCollection()" class="pokemon" (click)="openDetails(pokemon.id)">
+    <mat-progress-bar *ngIf="loading(); else pokemon" style="padding: 1rem 0" mode="indeterminate"></mat-progress-bar>
+    <ng-template #pokemon>
+    <div *ngIf="collection()?.length; else empty" class="pokemon-collection">
+      <div *ngFor="let pokemon of collection()" class="pokemon" (click)="openDetails(pokemon.id)">
         <img alt="" [ngSrc]="pokemon.imageUrl" [width]="50" [height]="50"/>
         <p>{{ pokemon.name }}</p>
       </div>
     </div>
+    </ng-template>
     <ng-template #empty>
       <p>No Pokemon found or an error was thrown.</p>
     </ng-template>
