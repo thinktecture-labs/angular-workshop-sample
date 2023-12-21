@@ -20,7 +20,7 @@ export class MainLayoutComponent {
   private readonly authService = inject(AuthService);
   open = false;
 
-  user$ = this.authService.user$;
+  user$ = this.authService.user$.pipe(tap(user => (console.log(user))));
   authenticated$ = this.authService.isAuthenticated$;
 
   login(): void {
@@ -28,7 +28,7 @@ export class MainLayoutComponent {
   }
 
   logout(): void {
-    this.authService.loginWithRedirect();
+    this.authService.logout();
   }
 
   toggleMenu() {

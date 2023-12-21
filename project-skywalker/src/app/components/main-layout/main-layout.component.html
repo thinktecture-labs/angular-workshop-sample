@@ -4,14 +4,16 @@
     </button>
     <h4>Sample App</h4>
     <div class="spacer"></div>
-    <button *ngIf="authenticated$ | async; else loggedIn" mat-icon-button (click)="login()">
+    <button *ngIf="!(authenticated$ | async); else loggedIn" mat-icon-button (click)="login()">
       <mat-icon>login</mat-icon>
     </button>
   <ng-template #loggedIn>
-    <p>{{(user$ | async)?.name}}</p>
+    <div style="display: flex; align-items: center;">
+    <span>{{(user$ | async)?.nickname}}</span>
     <button mat-icon-button (click)="logout()">
       <mat-icon>logout</mat-icon>
     </button>
+    </div>
   </ng-template>
 </mat-toolbar>
 <mat-sidenav-container [hasBackdrop]="true">
