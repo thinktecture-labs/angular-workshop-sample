@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {catchError, Observable, of} from 'rxjs';
 import { Generation } from '../models/generation';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from '../models/pokemon';
@@ -16,6 +16,11 @@ export class PokemonService {
   }
 
   getPokemonCollection(gen: number = 1) {
-    return this.httpClient.get<Pokemon[]>(`${apiBaseUrl}generations/${gen}/pokemon`);
+    return this.httpClient.get<Pokemon[]>(`${apiBaseUrl}generations/${gen}/pokemon`).pipe(
+      catchError(err => {
+        console.error(err);
+        return [];
+      })
+    );
   }
 }

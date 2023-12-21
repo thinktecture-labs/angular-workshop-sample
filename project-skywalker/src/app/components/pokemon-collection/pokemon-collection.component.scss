@@ -1,0 +1,27 @@
+.pokemon-collection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 2rem 1rem;
+}
+
+.pokemon {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  transition: scale .3s ease-in-out;
+
+  @media (hover) {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+
+  }
+}

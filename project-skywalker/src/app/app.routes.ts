@@ -20,7 +20,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'pokemons',
+        path: 'pokemon',
         component: PokemonCollectionComponent
     }
 ];
