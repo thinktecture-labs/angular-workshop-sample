@@ -1,0 +1,4 @@
+<ng-container *ngIf="pokemon$ | async as pokemon">
+  <img alt="" [ngSrc]="pokemon.imageUrl" [width]="240" [height]="240"/>
+  <p>{{ pokemon.name }}</p>
+</ng-container>
